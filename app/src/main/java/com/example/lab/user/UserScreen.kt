@@ -1,4 +1,5 @@
 package com.example.lab.user
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -6,14 +7,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.lab.data.User
+
 @Composable
 fun UserScreen(state: UiState) {
     when (state) {
         is UiState.Loading -> LoadingView()
         is UiState.Success -> UserView(state.user)
         is UiState.Error -> ErrorView(state.message)
+        is UiState.Empty -> EmptyView()
     }
 }
+
 @Composable
 fun LoadingView() {
     Box(
@@ -23,6 +27,7 @@ fun LoadingView() {
         CircularProgressIndicator()
     }
 }
+
 @Composable
 fun UserView(user: User) {
     Column(
@@ -35,6 +40,7 @@ fun UserView(user: User) {
         Text("Email: ${user.email}")
     }
 }
+
 @Composable
 fun ErrorView(message: String) {
     Box(
@@ -45,3 +51,12 @@ fun ErrorView(message: String) {
     }
 }
 
+@Composable
+fun EmptyView() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text("No hay datos de usuario disponibles.")
+    }
+}
