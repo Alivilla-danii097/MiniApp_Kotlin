@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Plantilla"
+rootProject.name = "KotlinEcosystemLab"
 include(":app")
  

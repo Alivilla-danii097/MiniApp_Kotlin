@@ -1,4 +1,4 @@
-package com.example.plantilla
+package com.example.lab
 
 import org.junit.Test
 
